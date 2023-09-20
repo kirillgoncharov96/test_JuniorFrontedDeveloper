@@ -1,0 +1,18 @@
+1. Данный код через 3s после запуска будет выводить:
+	Bad: undefined
+	Bad: undefined
+	Bad: undefined
+	Bad: undefined
+
+2. Заменить глобальную переменную var на let. 
+   Можно создать самовызывающуюся функцию, которая будет оборачивать setTimeout и принимать в свой аргумент значение i.
+
+const arr = [10, 12, 15, 21];
+
+for (var i = 0; i < arr.length; i++) {
+    (function(i) {
+        setTimeout(function() {
+            console.log(arr[i] > 13 ? `Good: ${arr[i]}` : `Bad: ${arr[i]}`)
+        }, 6000)
+    })(i);  
+}
