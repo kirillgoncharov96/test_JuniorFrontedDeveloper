@@ -2,6 +2,7 @@
 
 -- practice-2: https://test-junior-fronted-developer-practice-2.vercel.app/
 
+-- practice-3: https://json-posts-practice-3.vercel.app/
 
 ```bash
 # test_JuniorFrontedDeveloper
