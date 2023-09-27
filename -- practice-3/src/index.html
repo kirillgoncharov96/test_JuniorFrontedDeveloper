@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Table</title>
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <section class="table">
+        <div class="container">
+			<form id="search-form">
+				<input class="search" id="search" type="text" placeholder="Search..." />
+			</form>
+			<table class="table__data">
+				<thead>
+				<tr>
+					<th>
+					<button class="table__button" id="userId">userId</button>
+					</th>
+					<th><button class="table__button" id="id">id</button></th>
+					<th><button class="table__button" id="title">title</button></th>
+					<th><button class="table__button" id="body">body</button></th>
+				</tr>
+				</thead>
+				<tbody class="table__data content"></tbody>
+			</table>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
