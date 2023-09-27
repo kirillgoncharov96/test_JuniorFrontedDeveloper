@@ -1,3 +1,5 @@
+--practice-1: https://test-junior-fronted-developer-fc57.vercel.app/
+
 
 ```bash
 # test_JuniorFrontedDeveloper
