@@ -15,7 +15,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_requests__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../service/requests */ "./src/js/service/requests.js");
 
 
-
 const showContent = async () => {
     
     const _url = "https://jsonplaceholder.typicode.com/posts",
@@ -23,7 +22,6 @@ const showContent = async () => {
           searchInput = document.querySelector(".search"),
           tableBtn = document.querySelectorAll(".table__button");
 
-          console.log(tableBtn)
           
     const data =  await (0,_service_requests__WEBPACK_IMPORTED_MODULE_0__["default"])(_url).then(data => data).catch(error => console.log(error));
    
@@ -93,9 +91,9 @@ const showContent = async () => {
         createTableContent(sortedData);
     };
     
-    const resetBtn = (event) => {
+    const resetBtn = (e) => {
         tableBtn.forEach((button) => {
-            if (button !== event.target) {
+            if (button !== e.target) {
                 button.removeAttribute("sort");
             }
         });

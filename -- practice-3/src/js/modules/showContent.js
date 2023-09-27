@@ -1,6 +1,5 @@
 import getResource from "../service/requests";
 
-
 const showContent = async () => {
     
     const _url = "https://jsonplaceholder.typicode.com/posts",
@@ -8,7 +7,6 @@ const showContent = async () => {
           searchInput = document.querySelector(".search"),
           tableBtn = document.querySelectorAll(".table__button");
 
-          console.log(tableBtn)
           
     const data =  await getResource(_url).then(data => data).catch(error => console.log(error));
    
@@ -78,9 +76,9 @@ const showContent = async () => {
         createTableContent(sortedData);
     };
     
-    const resetBtn = (event) => {
+    const resetBtn = (e) => {
         tableBtn.forEach((button) => {
-            if (button !== event.target) {
+            if (button !== e.target) {
                 button.removeAttribute("sort");
             }
         });
