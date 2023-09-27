@@ -1,3 +1,5 @@
+
+```bash
 # test_JuniorFrontedDeveloper
 
 # Clone repository:
@@ -8,3 +10,4 @@ npm i
 
 # Run app -- practice-1/2/3
 gulp
+```
