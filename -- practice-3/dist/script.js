@@ -24,18 +24,27 @@ const showContent = async () => {
 
           
     const data =  await (0,_service_requests__WEBPACK_IMPORTED_MODULE_0__["default"])(_url).then(data => data).catch(error => console.log(error));
-   
+
+    const filterData = (input = '') => {
+        return data.filter(item => item.body.includes(input) || item.title.includes(input));
+    }
+
     searchInput.addEventListener("input", (e) => {
         const value = e.target.value.toLowerCase();
+        const activeBtn = [...tableBtn].find((button) => {
+            return button.getAttribute('sort');
+        });
+        const sortAttrib = activeBtn ? activeBtn.getAttribute('sort') : null;
+        const direction = sortAttrib === "desc" ? "asc" : "desc";
+        const param = activeBtn ? activeBtn.id : null;
+        
         if (value.length >= 3) {
-            createTableContent(
-                data.filter(item => item.body.includes(value) || item.title.includes(value))
-            );
+            sortData(filterData(value), param, direction)
         } else {
-            createTableContent(data);
+            sortData(data, param, direction)
         }
+        
     });
-
 
     const onLoadLine = (obj) => {
         
@@ -55,7 +64,7 @@ const showContent = async () => {
     };
     
     const createTableContent = (data) => {
-        console.log(data)
+        
         tableContent.innerHTML = "";
         
         data.map((item) => {
@@ -67,6 +76,9 @@ const showContent = async () => {
 
 
     const sortData = (data, param, direction = "asc") => {
+        if (!param) {
+            createTableContent(data);
+        }
         const sortedData =
           direction == "asc"
             ? [...data].sort(function (a, b) {
@@ -87,7 +99,7 @@ const showContent = async () => {
                 }
                 return 0;
             });
-    
+           
         createTableContent(sortedData);
     };
     
@@ -103,11 +115,12 @@ const showContent = async () => {
     tableBtn.forEach((button) => {
         button.addEventListener("click", (e) => {
           resetBtn(e);
+          const input = searchInput.value.toLowerCase();
           if (e.target.getAttribute("sort") == "desc") {
-            sortData(data, e.target.id, "desc");
+            sortData(filterData(input), e.target.id, "desc");
             e.target.setAttribute("sort", "asc");
           } else {
-            sortData(data, e.target.id, "asc");
+            sortData(filterData(input), e.target.id, "asc");
             e.target.setAttribute("sort", "desc");
           }
         });
